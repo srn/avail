@@ -15,7 +15,7 @@ var avail = require('avail');
 
 avail(function (domains) {
   domains.forEach(function(domain){
-    console.log(ip);
+    console.log(domain);
   });
 
   => avail.io ✖
