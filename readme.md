@@ -27,7 +27,7 @@ avail(function (domains) {
 ## CLI
 
 ```sh
-$ npm install --global ipify
+$ npm install --global avail
 ```
 
 ```sh
