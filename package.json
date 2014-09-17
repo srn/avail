@@ -33,6 +33,7 @@
   "homepage": "https://github.com/srn/avail",
   "dependencies": {
     "ava": "0.0.4",
+    "log-symbols": "^1.0.0",
     "nock": "^0.47.0",
     "request": "^2.42.0"
   }
