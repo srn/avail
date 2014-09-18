@@ -4,7 +4,7 @@
   "description": "Check if a domain is available - fast",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "mocha"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -32,9 +32,11 @@
   },
   "homepage": "https://github.com/srn/avail",
   "dependencies": {
-    "ava": "0.0.4",
     "log-symbols": "^1.0.0",
-    "nock": "^0.47.0",
     "request": "^2.42.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.21.4",
+    "nock": "~0.47.0"
   }
 }
