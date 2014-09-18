@@ -3,6 +3,7 @@
 var test = require('ava');
 var nock = require('nock');
 var avail = require('./');
+var symbols = require('log-symbols');
 
 var fixtures = {
   results: [
@@ -27,8 +28,8 @@ test(function (t) {
   t.plan(2);
 
   avail('avail', function (domains) {
-    t.assert(domains[0], fixtures[0]);
-    t.assert(domains[1], fixtures[1]);
+    t.assert(domains[0] === 'avail.io ' + symbols.success);
+    t.assert(domains[1] === 'avail.com ' +  symbols.error);
 
     t.end();
   });
