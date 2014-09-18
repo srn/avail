@@ -20,6 +20,8 @@ nock('https://domai.nr')
   .reply(200, fixtures);
 
 test(function (t) {
+  t.plan(2);
+
   avail('avail', function (domains) {
     t.assert(domains[0], fixtures[0]);
     t.assert(domains[1], fixtures[1]);
