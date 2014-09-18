@@ -4,16 +4,20 @@ var test = require('ava');
 var nock = require('nock');
 var avail = require('./');
 
-var fixtures = [
-  {
-    domain: 'avail.io',
-    availability: 'available'
-  },
-  {
-    domain: 'avail.com',
-    availability: 'unavailable'
-  }
-];
+var fixtures = {
+  results: [
+    {
+      domain: 'avail.io',
+      path: '',
+      availability: 'available'
+    },
+    {
+      domain: 'avail.com',
+      path: '',
+      availability: 'unavailable'
+    }
+  ]
+};
 
 nock('https://domai.nr')
   .get('/api/json/search?q=avail&client_id=avail')
