@@ -4,11 +4,13 @@
 
 Using the [domainr](https://domai.nr/) API.
 
-## Usage
+## Install
 
 ```sh
 $ npm install avail --save
 ```
+
+## Usage
 
 ```js
 var avail = require('avail');
