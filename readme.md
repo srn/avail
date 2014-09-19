@@ -1,4 +1,5 @@
-# avail [![Build Status](http://img.shields.io/travis/srn/avail.svg?style=flat-square)](https://travis-ci.org/srn/avail)
+# avail [![Build Status](http://img.shields.io/travis/srn/avail.svg?style=flat-square)](https://travis-ci.org/srn/avail) [![Dependency Status](http://img.shields.io/gemnasium/srn/avail.svg?style=flat-square)](https://gemnasium.com/srn/avail)
+
 
 > Check if a domain is available
 
