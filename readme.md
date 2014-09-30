@@ -16,7 +16,7 @@ $ npm install avail --save
 ```js
 var avail = require('avail');
 
-avail(function (domains) {
+avail('example.com', function (domains) {
   domains.forEach(function(domain){
     console.log(domain);
   });
