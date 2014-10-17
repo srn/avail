@@ -3,7 +3,7 @@
 
 > Check if a domain is available
 
-Using the [domainr](https://domai.nr/) API.
+Using the [Domainr](https://domainr.com/) API.
 
 ## Install
 
