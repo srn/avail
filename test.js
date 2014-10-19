@@ -20,7 +20,7 @@ var fixtures = {
   ]
 };
 
-nock('https://domai.nr')
+nock('https://domainr.com')
   .get('/api/json/search?q=avail&client_id=avail')
   .reply(200, fixtures);
 

@@ -4,7 +4,7 @@ var request = require('request');
 var symbols = require('log-symbols');
 
 module.exports = function(domain, callback){
-  var path = 'https://domai.nr/api/json/search?q='+domain+'&client_id=avail';
+  var path = 'https://domainr.com/api/json/search?q='+domain+'&client_id=avail';
 
   request(path, function (error, response, body) {
     var results = JSON.parse(body);
