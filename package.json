@@ -33,10 +33,10 @@
   "homepage": "https://github.com/srn/avail",
   "dependencies": {
     "log-symbols": "1.0.2",
-    "request": "2.55.0"
+    "request": "2.57.0"
   },
   "devDependencies": {
     "mocha": "2.2.5",
-    "nock": "2.2.0"
+    "nock": "2.3.0"
   }
 }
