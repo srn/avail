@@ -1,14 +1,15 @@
 'use strict';
 
-var request = require('request');
+var got = require('got');
 var symbols = require('log-symbols');
 
 module.exports = function(domain, callback){
-  var path = 'https://api.domainr.com/v1/search?q='+domain+'&client_id=avail';
+  var path = 'https://api.domainr.com/v1/search?q=' + domain + '&client_id=avail';
 
-  request(path, function (error, response, body) {
-    var results = JSON.parse(body);
-    results = results.results;
+  got(path, { json: true }, function (err, body) {
+    if (err) {
+      return callback(err);
+    }
 
     results = results.map(function (domain) {
       var available;
@@ -33,4 +34,4 @@ module.exports = function(domain, callback){
 
     callback(results);
   });
-}
+};
