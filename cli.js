@@ -57,6 +57,6 @@ avail(argv[0], function (err, domains) {
   }
 
   domains.forEach(function (domain) {
-    console.log(domain.domain, availabilitySymbol(domain.availability));
+    console.log(availabilitySymbol(domain.availability), domain.domain);
   });
 });
