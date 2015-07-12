@@ -1,6 +1,4 @@
-# avail [![Build Status](http://img.shields.io/travis/srn/avail.svg?style=flat-square)](https://travis-ci.org/srn/avail) [![Dependency Status](http://img.shields.io/gemnasium/srn/avail.svg?style=flat-square)](https://gemnasium.com/srn/avail)
-
-
+# avail [![Build Status][travis-badge]](https://travis-ci.org/srn/avail) [![Dependency Status][gemnasium-badge]](https://gemnasium.com/srn/avail)
 > Check if a domain is available
 
 Using the [Domainr](https://domainr.com/) API.
@@ -16,14 +14,12 @@ $ npm install avail --save
 ```js
 var avail = require('avail');
 
-avail('example.com', function (domains) {
-  domains.forEach(function(domain){
-    console.log(domain);
-  });
+avail('example.com', function (err, domains) {
+  if (err) return;
+  
+  console.log(domains);
 
-  => avail.io ✖
-  => avai.li/o ✔︎
-  => avail.io.eu ✔︎
+  => [ { domain: 'avail.io', availability: 'unavailable' }, { domain: 'avai.li/o', availability: 'available' } ...
 });
 ```
 
@@ -39,11 +35,14 @@ $ avail --help
   Example
     avail avail.io
 
-    avail.io ✔︎
-    avail.com ✖
+    ✔ avail.io︎
+    ✖ avail.com
 ```
 
 
 ## License
 
 MIT © [Søren Brokær](http://srn.io)
+
+[travis-badge]: http://img.shields.io/travis/srn/avail.svg?style=flat-square
+[gemnasium-badge]: http://img.shields.io/gemnasium/srn/avail.svg?style=flat-square
