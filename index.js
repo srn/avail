@@ -4,7 +4,7 @@ var got = require('got');
 var symbols = require('log-symbols');
 
 module.exports = function(domain, callback){
-  var path = 'https://api.domainr.com/v1/search?q=' + domain + '&client_id=avail';
+  var path = 'https://api.domainr.com/v1/search?q=' + domain + '&client_id={your-mashape-key}';
 
   got(path, { json: true }, function (err, body) {
     if (err) {
