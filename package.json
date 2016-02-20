@@ -7,7 +7,7 @@
     "test": "mocha"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.2"
   },
   "bin": {
     "avail": "cli.js"
@@ -32,11 +32,11 @@
   },
   "homepage": "https://github.com/srn/avail",
   "dependencies": {
-    "got": "3.3.0",
+    "got": "6.1.1",
     "log-symbols": "1.0.2"
   },
   "devDependencies": {
-    "mocha": "2.2.5",
-    "nock": "2.7.0"
+    "mocha": "2.4.5",
+    "nock": "7.2.2"
   }
 }

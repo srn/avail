@@ -10,7 +10,7 @@ var symbols = require('log-symbols');
 function help() {
   console.log([
     '',
-      '  ' + pkg.description,
+    '  ' + pkg.description,
     '',
     '  Example',
     '    avail avail.io',
@@ -30,33 +30,35 @@ if (argv.indexOf('--version') !== -1) {
   return;
 }
 
-// TODO: split into separate module perhaps
-function availabilitySymbol (availability) {
-  // List of possible availabilities: http://domainr.build/v1.0/docs/search#section-availability-status
-  if (availability === 'available') {
-    return symbols.success;
-  }
-
-  if (availability === 'taken' || availability === 'unavailable') {
-    return symbols.error;
-  }
-
-  if (availability === 'maybe' || availability === 'unknown') {
-    return symbols.warning;
-  }
-
-  if (availability === 'known' || availability === 'tld') {
-    return symbols.info;
+function summarySymbol(summary) {
+  switch (summary) {
+    case 'inactive':
+      return symbols.success;
+      break;
+    case 'active':
+      return symbols.error;
+      break;
+    case 'reserved':
+      return symbols.warning;
+      break;
+    default:
+      return symbols.error;
+      break;
   }
 }
 
-avail(argv[0], function (err, domains) {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
+avail(argv[0])
+  .then(result => {
+    const status = result[0];
+    const whois = result[1];
 
-  domains.forEach(function (domain) {
-    console.log(availabilitySymbol(domain.availability), domain.domain);
-  });
-});
+    console.log(result[0].body);
+
+    const domains = status.body.status;
+
+    domains.forEach(domain => {
+      console.log(whois.body.whoisText);
+      console.log(summarySymbol(domain.summary), domain.domain, `(${domain.status})`);
+    });
+  })
+  .catch(console.log);

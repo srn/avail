@@ -1,23 +1,20 @@
 'use strict';
 
-var got = require('got');
-var symbols = require('log-symbols');
+const got = require('got');
 
-module.exports = function(domain, callback){
-  var path = 'https://api.domainr.com/v1/search?q=' + domain + '&client_id=avail';
+const BASE_URL = 'https://api.domainr.com/v2';
+const CLIENT_ID = 'd03affbe48744f2e8a2e8453e5d3f27f' || process.env.DOMAINR_CLIENT_ID;
 
-  got(path, { json: true }, function (err, body) {
-    if (err) {
-      return callback(err);
-    }
+module.exports = (domain) => {
+  var opts = {
+    headers: {
+      'Origin': 'https://domainr.com'
+    },
+    json: true
+  };
 
-    var results = body.results.map(function (result) {
-      return {
-        domain: result.domain + result.path,
-        availability: result.availability
-      };
-    });
+  var status = got(`${BASE_URL}/status?domain=${domain}&client_id=${CLIENT_ID}`, opts);
+  var whois = got(`${BASE_URL}/whois?domain=${domain}&client_id=${CLIENT_ID}`, opts);
 
-    callback(null, results);
-  });
+  return Promise.all([status, whois]);
 };
