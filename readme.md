@@ -1,6 +1,6 @@
 # avail [![Build Status][travis-badge]](https://travis-ci.org/srn/avail)
 
-> Check if a domain is available
+> Check if a domain is available using the CLI. Also outputs whois information.
 
 Using the [Domainr](https://domainr.com/) v2 API.
 
