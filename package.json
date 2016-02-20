@@ -1,6 +1,6 @@
 {
   "name": "avail",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Check if a domain is available - fast",
   "main": "index.js",
   "scripts": {
