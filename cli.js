@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 
-var pkg = require('./package.json');
-var avail = require('./');
-var argv = process.argv.slice(2);
+const pkg = require('./package.json');
+const avail = require('./');
+const argv = process.argv.slice(2);
 
-var symbols = require('log-symbols');
+const symbols = require('log-symbols');
+const updateNotifier = require('update-notifier');
+updateNotifier({pkg}).notify();
 
 function help() {
   console.log([
