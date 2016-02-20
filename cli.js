@@ -52,8 +52,6 @@ avail(argv[0])
     const status = result[0];
     const whois = result[1];
 
-    console.log(result[0].body);
-
     const domains = status.body.status;
 
     domains.forEach(domain => {
