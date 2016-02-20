@@ -1,52 +1,48 @@
 'use strict';
 
-var assert = require('assert');
-var nock = require('nock');
-var avail = require('./');
+const assert = require('assert');
+const nock = require('nock');
 
-var fixtures = {
-  results: [
-    {
-      domain: 'avail.io',
-      path: '',
-      availability: 'available'
-    },
-    {
-      domain: 'avail.com',
-      path: '',
-      availability: 'unavailable'
-    },
-    {
-      domain: 'avail.com',
-      path: '/pathtest',
-      availability: 'unavailable'
-    }
-  ]
+const avail = require('./');
+
+const statusFixture = {
+  status: [{
+    domain: 'avail.io',
+    zone: 'io',
+    status: 'active',
+    summary: 'active'
+  }]
 };
 
-nock('https://domainr.com')
-  .get('/api/json/search?q=avail&client_id=avail')
-  .reply(200, fixtures);
+nock('https://api.domainr.com/v2')
+  .get('/status?domain=avail.io&client_id=d03affbe48744f2e8a2e8453e5d3f27f')
+  .reply(200, statusFixture);
 
-describe('avail', function(){
-  it('available', function(){
-    avail('avail', function (domains) {
-      assert.equal(domains[0].domain, 'avail.io');
-      assert.equal(domains[0].availability, 'available');
-    });
-  });
+var whoisFixture = {
+  domain: "avail.io",
+  whoisText: "\nDomain : avail.io\nStatus : Live\nExpiry : 2016-05-10\n"
+};
 
-  it('unavailable', function(){
-    avail('avail', function (domains) {
-      assert.equal(domains[1].domain, 'avail.com');
-      assert.equal(domains[1].availability, 'unavailable');
-    });
-  });
+nock('https://api.domainr.com/v2')
+  .get('/whois?domain=avail.io&client_id=d03affbe48744f2e8a2e8453e5d3f27f')
+  .reply(200, whoisFixture);
 
-  it('result with path', function(){
-    avail('avail', function (domains) {
-      assert.equal(domains[2].domain, 'avail.com/pathtest');
-      assert.equal(domains[2].availability, 'unavailable');
-    });
+describe('avail', () => {
+  it('status / whois', done => {
+    avail('avail.io')
+      .then(result => {
+        assert.notEqual(result[0].body.status, void 0);
+        assert.equal(result[0].body.status.length, 1);
+        assert.equal(result[0].body.status[0].domain, 'avail.io');
+        assert.equal(result[0].body.status[0].summary, 'active');
+
+        assert.equal(result[1].body.whoisText, whoisFixture.whoisText);
+
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+        done(err);
+      });
   });
 });
