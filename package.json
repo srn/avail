@@ -32,12 +32,12 @@
   },
   "homepage": "https://github.com/srn/avail",
   "dependencies": {
-    "got": "6.1.1",
+    "got": "6.3.0",
     "log-symbols": "1.0.2",
-    "update-notifier": "0.6.0"
+    "update-notifier": "0.6.3"
   },
   "devDependencies": {
     "mocha": "2.4.5",
-    "nock": "7.2.2"
+    "nock": "8.0.0"
   }
 }
