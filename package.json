@@ -37,7 +37,7 @@
     "update-notifier": "0.6.0"
   },
   "devDependencies": {
-    "mocha": "2.4.5",
+    "mocha": "2.5.3",
     "nock": "7.2.2"
   }
 }
